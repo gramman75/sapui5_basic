@@ -1,0 +1,59 @@
+<mvc:View
+	controllerName="ui5.basic.controller.Detail"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:b="ui5.basic.control"
+>
+<Page 
+	title="Detail Page"
+	showNavButton="true"	
+	navButtonPress=".onNavBack"
+	>
+	<ObjectHeader
+		responsive="true"
+		fullScreenOptimized="true"
+		title="{invoice>ProductName}"
+		intro="{invoice>ShipperName}"
+		number="{
+			parts: [
+				'invoice>ExtendedPrice',
+				'view>/currency'
+			],
+			type: 'sap.ui.model.type.Currency',
+			formatOptions: {
+				showMeasure: false
+			}
+		}"
+		numberUnit="{view>/currency}"
+
+	>
+	<attributes>
+		<ObjectAttribute
+			title="Quantity"
+			text="{invoice>Quantity}"
+		>
+		</ObjectAttribute>
+		<ObjectAttribute
+			title="Order Date"
+			text="{
+				path: 'invoice>ShippedDate',
+				type: 'sap.ui.model.type.Date',
+				formatOptions: {
+					style :'long',
+					source : {
+						pattern:'yyyy-mm-ddTHH:mm:ss'
+					}
+				}
+			}"
+		>
+		</ObjectAttribute>
+	</attributes>
+	</ObjectHeader>
+	<b:ProductRating
+		id="rating"
+		class="sapUiSmallMarginBeginEnd"
+		change=".onRatingChange"
+	>
+	</b:ProductRating>
+</Page>
+</mvc:View>

@@ -1,0 +1,11 @@
+specVersion: '3.1'
+metadata:
+  name: ui5.basic
+type: application
+framework:
+  name: OpenUI5
+  version: "1.120.1"
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+    - name: themelib_sap_horizon

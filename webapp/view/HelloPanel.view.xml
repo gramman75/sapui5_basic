@@ -1,0 +1,34 @@
+<mvc:View
+    controllerName="ui5.basic.controller.HelloPanel"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+>
+
+<Panel 
+    headerText="Hello Panel Text" 
+    expandable="{device>/system/phone}"
+    expanded="{= !${device>/system/phone} }"
+
+>
+    <content>
+        <Button 
+            id="helloDialogButton" 
+            text="Hello Dialog"
+            press=".onOpenDialog"
+            class="sapUiSmallMarginEnd sapUiVisibleOnlyOnDesktop"
+        />
+        <Button
+            class="highlight"
+            text="{i18n>showHelloButtonText}"
+            press=".onShowHello"
+        />
+
+        <Input 
+            value="{/recipient/name}"
+            valueLiveUpdate="true"
+            description="Hello {/recipient/name}"
+            width="60%"
+        />
+    </content>
+</Panel>
+</mvc:View>

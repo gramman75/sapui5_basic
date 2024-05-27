@@ -1,0 +1,12 @@
+<mvc:View
+    controllerName="ui5.basic.controller.App"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+>
+<Page title="Page Title" >
+    <content>
+        <mvc:XMLView viewName="ui5.basic.view.HelloPanel"></mvc:XMLView>
+        <mvc:XMLView viewName="ui5.basic.view.InvoiceList"></mvc:XMLView>
+    </content>
+</Page>
+</mvc:View>

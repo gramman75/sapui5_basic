@@ -1,0 +1,19 @@
+{
+    "name": "ui5.basic",
+    "version": "1.0.0",
+    "description": "The UI5 walkthrough application",
+    "scripts": {
+        "start": "ui5 serve -o index.html",
+        "build" : "ui5 build -a"
+    },
+    "ui5" :{
+        "ui5linter" : {
+            "idNamingPattern" : "",
+            "eventNamingPattern" : "" 
+        }
+    }
+    
+
+
+}
+  

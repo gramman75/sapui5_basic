@@ -1,0 +1,10 @@
+<mvc:View
+    controllerName="ui5.basic.controller.App"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+>
+<Shell>
+    <App id="app">
+    </App>
+</Shell>
+</mvc:View>

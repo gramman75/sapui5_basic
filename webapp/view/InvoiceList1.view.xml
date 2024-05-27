@@ -1,0 +1,105 @@
+<mvc:View
+	controllerName="ui5.basic.controller.InvoiceList"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+<Table
+    headerText="Table Header"
+    id="invoiceList"
+    width="auto"
+    items="{
+        path: 'invoice>/Invoices',
+        sorter: {
+            path: 'ShipperName',
+            group: true
+        },
+        groupHeaderFactory: '.groupHeader'
+    }">
+<headerToolbar>
+    <Toolbar>
+        <content>
+            <Title 
+                level="Auto"
+                text="Invoice"
+                textAlign="Initial"
+                titleStyle="Auto"
+            />
+            <ToolbarSpacer />
+            <SearchField
+                visible="true"
+                search=".onFilterInvoice"
+            />
+        </content>
+    </Toolbar>
+</headerToolbar>
+<columns>
+    <Column
+        hAlign="End"
+        minScreenWidth="Small"
+        demandPopin="true"
+        width="5em">
+        <Text text="Quantity" />
+    </Column>
+    <Column>
+        <Text text="Name" />
+    </Column>
+    <Column
+        minScreenWidth="Small"
+        demandPopin="true">
+        <Text text="Status" />
+    </Column>
+    <Column
+        minScreenWidth="Tablet"
+        demandPopin="false">
+        <Text text="Supplier" />
+    </Column>
+    <Column hAlign="End">
+        <Text text="Price" />
+    </Column>
+</columns>
+    <items>
+        <ColumnListItem
+            vAlign="Inherit"
+            type="Navigation"
+            press=".onPressDetail"
+        >
+            <cells>
+                <ObjectNumber
+                    emphasized="true"
+                    number="{invoice>Quantity}"
+                />
+                
+                <ObjectIdentifier title="{invoice>ProductName}" />
+                
+                <Text 
+                    text="{ 
+                        parts: [
+                            'invoice>Status'
+                        ],
+                        formatter: '.formatter.statusText'
+                     }"
+                />
+                <Text text="{invoice>ShipperName}" />
+                <ObjectNumber 
+                    number="{
+                        parts: [
+                            'invoice>ExtendedPrice',
+                            'view>/currency'
+                        ],
+                        type: 'sap.ui.model.type.Currency',
+                        formatOptions: {
+                            showMeasure:false
+                        }
+                    }"
+                    unit="{view>/currency}"
+                    state="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success'}"
+                ></ObjectNumber>
+                
+            </cells>
+        </ColumnListItem>
+    </items>
+</Table>
+</mvc:View>
